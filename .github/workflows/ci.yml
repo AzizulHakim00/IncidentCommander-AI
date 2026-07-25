@@ -12,5 +12,17 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - run: pip install -r requirements.txt -r requirements-dev.txt
-      - run: pytest -q
+      - name: Install dependencies
+        run: pip install -r requirements.txt -r requirements-dev.txt
+      - name: Compile Python sources
+        run: python -m py_compile app.py incidentcommander/*.py
+      - name: Core regression tests
+        run: pytest -q tests/test_core.py
+      - name: Parser tests
+        run: pytest -q tests/test_parser.py
+      - name: Analysis and correlation tests
+        run: pytest -q tests/test_analysis.py
+      - name: Redaction, history, and report tests
+        run: pytest -q tests/test_redaction_history_report.py
+      - name: Entrypoint syntax test
+        run: pytest -q tests/test_app_syntax.py

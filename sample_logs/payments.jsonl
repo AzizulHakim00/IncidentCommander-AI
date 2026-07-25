@@ -1,0 +1,3 @@
+{"timestamp":"2026-07-26T04:00:04Z","level":"INFO","service":"payments","message":"payment authorization started","request_id":"aa01","trace_id":"tr100","dependency":"bank-api","duration_ms":88,"status_code":200}
+{"timestamp":"2026-07-26T04:00:07Z","level":"WARN","service":"payments","message":"orders dependency slow; payment held","request_id":"aa01","trace_id":"tr100","dependency":"orders","duration_ms":2400,"status_code":202}
+{"timestamp":"2026-07-26T04:00:12Z","level":"ERROR","service":"payments","message":"upstream timeout dependency failed","request_id":"aa05","trace_id":"tr104","dependency":"orders","duration_ms":5000,"status_code":503}

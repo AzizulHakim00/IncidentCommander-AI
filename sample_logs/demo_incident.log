@@ -1,0 +1,12 @@
+2026-07-26 04:00:00 INFO [gateway] request_id=aa01 checkout request received
+2026-07-26 04:00:01 INFO [orders] request_id=aa01 creating order
+2026-07-26 04:00:02 WARN [orders] database response time 1850ms
+2026-07-26 04:00:03 ERROR [orders] SQLSTATE=08001 connection refused service=orders database primary-db
+2026-07-26 04:00:04 ERROR [orders] connection pool exhausted service=orders active=40 max=40
+2026-07-26 04:00:05 ERROR [gateway] upstream timeout dependency=orders request_id=aa01
+2026-07-26 04:00:06 WARN [payments] circuit breaker opened dependency=orders
+2026-07-26 04:00:07 ERROR [orders] SQLSTATE=08001 connection refused service=orders database primary-db
+2026-07-26 04:00:08 ERROR [orders] too many connections service=orders
+2026-07-26 04:00:09 INFO [gateway] request_id=aa02 health check ok
+2026-07-26 04:00:10 CRITICAL [orders] dependency failed database unavailable
+2026-07-26 04:00:11 ERROR [gateway] 503 Service Unavailable upstream orders

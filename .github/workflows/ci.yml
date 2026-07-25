@@ -16,8 +16,14 @@ jobs:
         run: pip install -r requirements.txt -r requirements-dev.txt
       - name: Compile Python sources
         run: python -m py_compile app.py incidentcommander/*.py
-      - name: Core regression tests
-        run: pytest -q tests/test_core.py
+      - name: Core parser regression
+        run: pytest -q tests/test_core.py::test_parser_extracts_fields
+      - name: Core analysis regression
+        run: pytest -q tests/test_core.py::test_analysis_produces_summary_and_clusters
+      - name: Core root-cause regression
+        run: pytest -q tests/test_core.py::test_database_root_cause_is_ranked
+      - name: Core report regression
+        run: pytest -q tests/test_core.py::test_report_contains_safety_note
       - name: Parser tests
         run: pytest -q tests/test_parser.py
       - name: Analysis and correlation tests

@@ -13,7 +13,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Install dependencies
-        run: pip install --disable-pip-version-check -q -r requirements.txt -r requirements-dev.txt
+        run: python -m pip install --disable-pip-version-check -q -r requirements.txt -r requirements-dev.txt
       - name: Compile Python sources
         run: python -m py_compile app.py incidentcommander/*.py
       - name: Parser value regression
@@ -27,18 +27,18 @@ jobs:
           assert events[1].service == "orders"
           PY
       - name: Legacy parser test
-        run: pytest -q tests/test_core.py::test_parser_extracts_fields
+        run: python -m pytest -q tests/test_core.py::test_parser_extracts_fields
       - name: Legacy analysis test
-        run: pytest -q tests/test_core.py::test_analysis_produces_summary_and_clusters
+        run: python -m pytest -q tests/test_core.py::test_analysis_produces_summary_and_clusters
       - name: Legacy root-cause test
-        run: pytest -q tests/test_core.py::test_database_root_cause_is_ranked
+        run: python -m pytest -q tests/test_core.py::test_database_root_cause_is_ranked
       - name: Legacy report test
-        run: pytest -q tests/test_core.py::test_report_contains_safety_note
+        run: python -m pytest -q tests/test_core.py::test_report_contains_safety_note
       - name: V2 parser tests
-        run: pytest -q tests/test_parser.py
+        run: python -m pytest -q tests/test_parser.py
       - name: V2 analysis and correlation tests
-        run: pytest -q tests/test_analysis.py
+        run: python -m pytest -q tests/test_analysis.py
       - name: V2 redaction, history, and report tests
-        run: pytest -q tests/test_redaction_history_report.py
+        run: python -m pytest -q tests/test_redaction_history_report.py
       - name: Entrypoint syntax test
-        run: pytest -q tests/test_app_syntax.py
+        run: python -m pytest -q tests/test_app_syntax.py

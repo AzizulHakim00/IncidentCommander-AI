@@ -16,14 +16,29 @@ jobs:
         run: pip install --disable-pip-version-check -q -r requirements.txt -r requirements-dev.txt
       - name: Compile Python sources
         run: python -m py_compile app.py incidentcommander/*.py
-      - name: Core parser regression
-        run: pytest -q tests/test_core.py::test_parser_extracts_fields
-      - name: Core analysis regression
-        run: pytest -q tests/test_core.py::test_analysis_produces_summary_and_clusters
-      - name: Core root-cause regression
-        run: pytest -q tests/test_core.py::test_database_root_cause_is_ranked
-      - name: Core report regression
-        run: pytest -q tests/test_core.py::test_report_contains_safety_note
+      - name: Parser event count regression
+        run: |
+          python - <<'PY'
+          from incidentcommander.parser import parse_text
+          sample = "2026-07-26 02:00:00 INFO [api] request started\n2026-07-26 02:00:01 ERROR [orders] SQLSTATE connection refused database\n2026-07-26 02:00:02 ERROR [orders] database connection refused\n2026-07-26 02:00:03 WARN [api] upstream timeout\n"
+          assert len(parse_text(sample)) == 4
+          PY
+      - name: Parser severity regression
+        run: |
+          python - <<'PY'
+          from incidentcommander.parser import parse_text
+          sample = "2026-07-26 02:00:00 INFO [api] request started\n2026-07-26 02:00:01 ERROR [orders] SQLSTATE connection refused database\n"
+          assert parse_text(sample)[1].level == "ERROR"
+          PY
+      - name: Parser service regression
+        run: |
+          python - <<'PY'
+          from incidentcommander.parser import parse_text
+          sample = "2026-07-26 02:00:00 INFO [api] request started\n2026-07-26 02:00:01 ERROR [orders] SQLSTATE connection refused database\n"
+          assert parse_text(sample)[1].service == "orders"
+          PY
+      - name: Core regression suite
+        run: pytest -q tests/test_core.py
       - name: Parser tests
         run: pytest -q tests/test_parser.py
       - name: Analysis and correlation tests

@@ -2,6 +2,15 @@
 headless = true
 address = "0.0.0.0"
 port = 8501
+maxUploadSize = 200
 
 [browser]
 gatherUsageStats = false
+
+[theme]
+base = "dark"
+primaryColor = "#5985FF"
+backgroundColor = "#060B18"
+secondaryBackgroundColor = "#0D172E"
+textColor = "#F4F7FF"
+font = "sans serif"

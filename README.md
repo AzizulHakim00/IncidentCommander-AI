@@ -1,26 +1,35 @@
-# IncidentCommander AI v2
+# IncidentCommander AI v3
 
-IncidentCommander AI is an offline-first incident-intelligence platform that converts application, infrastructure, and JSON logs into correlated incident episodes, anomaly signals, blast-radius maps, ranked root causes, change-risk evidence, and human-reviewed response runbooks.
+IncidentCommander AI is an offline-first incident-intelligence platform that turns application, infrastructure, JSON Lines, and structured CSV logs into correlated incident episodes, anomaly signals, service-health scorecards, blast-radius maps, ranked root causes, change-risk evidence, and human-reviewed response plans.
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/AzizulHakim00/IncidentCommander-AI)
 
-> One-click deployment uses the repository's `render.yaml` and Dockerfile. Sign in to Render with GitHub, review the Blueprint, and approve the deployment.
+Live deployment: https://incidentcommander-ai-azizul.onrender.com/
 
-## V2 capabilities
+## Hybrid V3 experience
+
+- Professional dark operations dashboard with responsive sidebar navigation
+- Executive command center with six KPI cards, signal timeline, health gauge, root-cause confidence, and action queue
+- Service-level health and impact scorecards
+- Risk-intensity heatmap and latency/failure bands
+- Cross-service request tracing and correlated incident episodes
+- Service dependency Sankey and blast-radius visualization
+- Evidence-first response center with investigation notes and human-reviewed runbooks
+- Global service scope and analyst-focus controls
+- Incident memory, similar-incident retrieval, and current-vs-history comparison
+- Observability radar, metadata-quality recommendations, and sensitive-data audit
+- Markdown, HTML, JSON, executive JSON, and analyzed CSV exports
+
+## Analysis capabilities
 
 - Multi-file ingestion: plain text, JSON Lines, and structured CSV logs
 - Metadata extraction: timestamp, severity, service, request ID, trace ID, host, dependency, latency, and status code
 - TF-IDF representation, K-Means clustering, and Isolation Forest anomaly detection
 - Evidence-backed root-cause ranking across database, auth, memory, dependencies, DNS, TLS, disk, traffic, exceptions, and deployment regressions
-- Correlated incident episodes and cross-service request traces
-- Service dependency Sankey and blast-radius ranking
 - Optional deployment/change correlation
-- SEV classification, health score, error rate, availability proxy, and P95 latency
+- SEV classification, operational-health score, error rate, availability proxy, and P95 latency
 - Sensitive-data detection and optional redaction
-- Incident fingerprinting, SQLite incident history, and similar-incident retrieval
-- Observability-quality score and recommendations
-- Markdown, HTML, JSON, and analyzed-CSV exports
-- Human-in-the-loop runbook checklist
+- Incident fingerprinting and SQLite incident history
 - No paid API and no autonomous production remediation
 
 ## Architecture
@@ -36,9 +45,9 @@ TF-IDF + clustering + anomaly detection
           ↓
 Episode correlation + dependency/blast-radius analysis
           ↓
-Root-cause evidence engine + runbooks
+Presentation analytics + evidence-backed action queue
           ↓
-Command dashboard + incident memory + reports
+Hybrid V3 command dashboard + incident memory + reports
 ```
 
 ## Run locally
@@ -54,7 +63,7 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-Open `http://localhost:8501` and select **Load multi-service demo**.
+Open `http://localhost:8501` and select **Load guided demo**.
 
 ## Tests
 
@@ -72,26 +81,13 @@ docker run --rm -p 8501:8501 incidentcommander-ai
 
 ## Deployment
 
-### Render — recommended
+The repository includes a Render Docker Blueprint, Streamlit configuration, health checks, and auto-deploy from `main`.
 
-Click the **Deploy to Render** button at the top of this README. The Blueprint deploys:
-
-- Repository: `AzizulHakim00/IncidentCommander-AI`
-- Branch: `main`
+- Service: `incidentcommander-ai-azizul`
 - Runtime: Docker
 - Region: Singapore
-- Plan: Free
 - Health check: `/_stcore/health`
-- Auto-deploy: enabled for future pushes to `main`
-
-Expected service name: `incidentcommander-ai-azizul`.
-
-### Streamlit Community Cloud
-
-1. Sign in with GitHub.
-2. Select this repository and the `main` branch.
-3. Set `app.py` as the entry point.
-4. Deploy.
+- Auto-deploy: enabled
 
 ## Change correlation CSV
 
@@ -102,7 +98,7 @@ timestamp,service,change
 
 ## Safety and limitations
 
-IncidentCommander AI ranks plausible causes from available evidence; it cannot prove causality. Availability and severity values are log-derived operational proxies. Engineers must verify telemetry, permissions, rollback safety, and business impact before production changes.
+IncidentCommander AI ranks plausible causes from available evidence; it cannot prove causality. Availability, health, and severity values are operational proxies derived from submitted logs. Engineers must verify telemetry, permissions, rollback safety, and business impact before production changes.
 
 ## License
 

@@ -2,6 +2,10 @@
 
 IncidentCommander AI is an offline-first incident-intelligence platform that converts application, infrastructure, and JSON logs into correlated incident episodes, anomaly signals, blast-radius maps, ranked root causes, change-risk evidence, and human-reviewed response runbooks.
 
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/AzizulHakim00/IncidentCommander-AI)
+
+> One-click deployment uses the repository's `render.yaml` and Dockerfile. Sign in to Render with GitHub, review the Blueprint, and approve the deployment.
+
 ## V2 capabilities
 
 - Multi-file ingestion: plain text, JSON Lines, and structured CSV logs
@@ -56,7 +60,7 @@ Open `http://localhost:8501` and select **Load multi-service demo**.
 
 ```bash
 pip install -r requirements-dev.txt
-pytest -q
+python -m pytest -q
 ```
 
 ## Docker
@@ -68,13 +72,25 @@ docker run --rm -p 8501:8501 incidentcommander-ai
 
 ## Deployment
 
-The repository includes Streamlit configuration, a Render Docker blueprint, and a GitHub Actions test workflow.
+### Render — recommended
 
-For Streamlit Community Cloud:
+Click the **Deploy to Render** button at the top of this README. The Blueprint deploys:
 
-1. Grant Streamlit access to this repository or make it public.
-2. Create an app from the repository.
-3. Select `app.py` as the entry point.
+- Repository: `AzizulHakim00/IncidentCommander-AI`
+- Branch: `main`
+- Runtime: Docker
+- Region: Singapore
+- Plan: Free
+- Health check: `/_stcore/health`
+- Auto-deploy: enabled for future pushes to `main`
+
+Expected service name: `incidentcommander-ai-azizul`.
+
+### Streamlit Community Cloud
+
+1. Sign in with GitHub.
+2. Select this repository and the `main` branch.
+3. Set `app.py` as the entry point.
 4. Deploy.
 
 ## Change correlation CSV

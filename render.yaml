@@ -1,7 +1,14 @@
 services:
   - type: web
-    name: incidentcommander-ai
+    name: incidentcommander-ai-azizul
     runtime: docker
+    repo: https://github.com/AzizulHakim00/IncidentCommander-AI
+    branch: main
     plan: free
+    region: singapore
+    dockerfilePath: ./Dockerfile
     autoDeploy: true
     healthCheckPath: /_stcore/health
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: "1"

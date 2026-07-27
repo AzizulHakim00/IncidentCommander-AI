@@ -1,10 +1,26 @@
-# IncidentCommander AI v4
+# IncidentCommander AI v5
 
 IncidentCommander AI is an offline-first incident-intelligence platform that turns application, infrastructure, JSON Lines, and structured CSV logs into correlated incident episodes, anomaly signals, service-health scorecards, blast-radius maps, ranked root causes, change-risk evidence, and human-reviewed response plans.
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/AzizulHakim00/IncidentCommander-AI)
 
 Live deployment: https://incidentcommander-ai-azizul.onrender.com/
+
+## Live Showcase V5
+
+- Dedicated **Live Incident Studio** multipage experience
+- Four deterministic scenarios with 220–260 events each:
+  - Database Meltdown
+  - Payment Cascade
+  - Memory Storm
+  - Auth Attack
+- Mixed demonstration formats: plain logs, JSON Lines, and structured CSV
+- Repository-contained H.264 incident replay video with autoplay and loop controls
+- Three custom SVG visual stories: architecture, service blast radius, and incident timeline
+- Scenario gallery, animated KPI wall, incident ticker, health charts, and story timeline
+- One-click scenario handoff into the full Command Center through Streamlit session state
+- Downloadable scenario data for demonstrations and testing
+- No external media host, stock-image dependency, or paid API
 
 ## Cinematic V4 experience
 
@@ -36,7 +52,7 @@ Live deployment: https://incidentcommander-ai-azizul.onrender.com/
 ## Architecture
 
 ```text
-Multi-source logs + optional change CSV
+Generated demo scenarios / uploaded logs / optional change CSV
           ↓
 Parser and metadata normalization
           ↓
@@ -48,7 +64,7 @@ Episode correlation + dependency/blast-radius analysis
           ↓
 Presentation analytics + evidence-backed action queue
           ↓
-Cinematic V4 command dashboard + incident memory + reports
+Cinematic command dashboard + live studio + incident memory + reports
 ```
 
 ## Run locally
@@ -64,7 +80,7 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-Open `http://localhost:8501` and select **Load cinematic demo**.
+Open `http://localhost:8501`. Use **Load cinematic demo** in the Command Center or open **Live Incident Studio** from Streamlit navigation.
 
 ## Tests
 
@@ -73,7 +89,7 @@ pip install -r requirements-dev.txt
 python -m pytest -q
 ```
 
-CI validates the analysis engine, parser, correlation, redaction, history, reporting, presentation analytics, Python syntax, and the V4 cinematic visual contract.
+CI validates the analysis engine, parser, correlation, redaction, history, reporting, presentation analytics, Python syntax, cinematic visual contract, scenario generation, SVG media, video packaging, and Live Incident Studio.
 
 ## Docker
 

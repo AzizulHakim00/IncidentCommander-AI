@@ -15,7 +15,7 @@ jobs:
       - name: Install dependencies
         run: python -m pip install --disable-pip-version-check -q -r requirements.txt -r requirements-dev.txt
       - name: Compile Python sources
-        run: python -m py_compile app.py incidentcommander/*.py
+        run: python -m py_compile app.py incidentcommander/*.py pages/*.py
       - name: Parser value regression
         run: |
           python - <<'PY'
@@ -38,5 +38,7 @@ jobs:
         run: python -m pytest -q tests/test_presentation.py
       - name: V4 cinematic visual contract
         run: python -m pytest -q tests/test_visual_contract.py
+      - name: V5 live studio and media tests
+        run: python -m pytest -q tests/test_live_studio.py
       - name: Entrypoint syntax test
         run: python -m pytest -q tests/test_app_syntax.py

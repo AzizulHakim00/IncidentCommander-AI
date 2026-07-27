@@ -1,4 +1,4 @@
-# IncidentCommander AI v3
+# IncidentCommander AI v4
 
 IncidentCommander AI is an offline-first incident-intelligence platform that turns application, infrastructure, JSON Lines, and structured CSV logs into correlated incident episodes, anomaly signals, service-health scorecards, blast-radius maps, ranked root causes, change-risk evidence, and human-reviewed response plans.
 
@@ -6,18 +6,18 @@ IncidentCommander AI is an offline-first incident-intelligence platform that tur
 
 Live deployment: https://incidentcommander-ai-azizul.onrender.com/
 
-## Hybrid V3 experience
+## Cinematic V4 experience
 
-- Professional dark operations dashboard with responsive sidebar navigation
-- Executive command center with six KPI cards, signal timeline, health gauge, root-cause confidence, and action queue
-- Service-level health and impact scorecards
-- Risk-intensity heatmap and latency/failure bands
-- Cross-service request tracing and correlated incident episodes
-- Service dependency Sankey and blast-radius visualization
-- Evidence-first response center with investigation notes and human-reviewed runbooks
-- Global service scope and analyst-focus controls
-- Incident memory, similar-incident retrieval, and current-vs-history comparison
-- Observability radar, metadata-quality recommendations, and sensitive-data audit
+- Animated aurora background and moving grid atmosphere
+- Cinematic landing hero with orbiting AI core and scanning effects
+- Animated live-status pulses, severity badges, KPI progress lines, and signal ticker
+- Glassmorphism metric cards with hover motion and accent glows
+- Executive incident command center with health gauge, severity donut, area timeline, and root-cause confidence
+- Animated service health cards with conic health rings
+- Rich anomaly heatmap, latency/failure bands, distributed traces, and deployment correlation
+- Polished dependency Sankey and blast-radius visualizations
+- Evidence-first response center with human-reviewed runbooks and analyst notes
+- Responsive mobile behaviour and reduced-motion accessibility fallback
 - Markdown, HTML, JSON, executive JSON, and analyzed CSV exports
 
 ## Analysis capabilities
@@ -25,11 +25,12 @@ Live deployment: https://incidentcommander-ai-azizul.onrender.com/
 - Multi-file ingestion: plain text, JSON Lines, and structured CSV logs
 - Metadata extraction: timestamp, severity, service, request ID, trace ID, host, dependency, latency, and status code
 - TF-IDF representation, K-Means clustering, and Isolation Forest anomaly detection
-- Evidence-backed root-cause ranking across database, auth, memory, dependencies, DNS, TLS, disk, traffic, exceptions, and deployment regressions
+- Evidence-backed root-cause ranking across database, authentication, memory, dependencies, DNS, TLS, disk, traffic, exceptions, and deployment regressions
+- Correlated incident episodes and cross-service request traces
 - Optional deployment/change correlation
 - SEV classification, operational-health score, error rate, availability proxy, and P95 latency
 - Sensitive-data detection and optional redaction
-- Incident fingerprinting and SQLite incident history
+- Incident fingerprinting, SQLite incident history, and similar-incident comparison
 - No paid API and no autonomous production remediation
 
 ## Architecture
@@ -47,7 +48,7 @@ Episode correlation + dependency/blast-radius analysis
           ↓
 Presentation analytics + evidence-backed action queue
           ↓
-Hybrid V3 command dashboard + incident memory + reports
+Cinematic V4 command dashboard + incident memory + reports
 ```
 
 ## Run locally
@@ -63,7 +64,7 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-Open `http://localhost:8501` and select **Load guided demo**.
+Open `http://localhost:8501` and select **Load cinematic demo**.
 
 ## Tests
 
@@ -71,6 +72,8 @@ Open `http://localhost:8501` and select **Load guided demo**.
 pip install -r requirements-dev.txt
 python -m pytest -q
 ```
+
+CI validates the analysis engine, parser, correlation, redaction, history, reporting, presentation analytics, Python syntax, and the V4 cinematic visual contract.
 
 ## Docker
 

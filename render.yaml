@@ -7,7 +7,7 @@ services:
     plan: free
     region: singapore
     dockerfilePath: ./Dockerfile
-    autoDeploy: true
+    autoDeployTrigger: commit
     healthCheckPath: /_stcore/health
     envVars:
       - key: PYTHONUNBUFFERED
